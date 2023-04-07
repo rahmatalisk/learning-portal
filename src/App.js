@@ -1,57 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-
+import React, { useState } from "react";
+import "./style/output.css"
+import "./App.css"
+import 'react-toastify/dist/ReactToastify.css';
+import Login from "./components/student/login/Login"
+import Register from "./components/student/register/Register"
+import CoursePlayer from "./components/student/course/CoursePlayer"
+import LeaderBoard from "./components/student/leaderboard/LeaderBoard"
+import Quiz from "./components/student/quiz/Quiz"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AdminLogin from "./components/admin/AdminLogin/AdminLogin";
+import DashBoard from "./components/admin/dashboard/DashBoard";
+import Quizzes from "./components/admin/quizzes/Quizzes";
+import Videos from "./components/admin/videos/Videos";
+import Assignment from "./components/admin/Assignment/Assignment";
+import AssignmentMark from "./components/admin/assignmentMark/AssignmentMark";
 function App() {
+  const [isQuizSubmit,setIsQuizSubmit]= useState({})
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<DashBoard />} />
+        <Route path="/admin/quizzes" element={<Quizzes />} />
+        <Route path="/admin/videos" element={<Videos />} />
+        <Route path="/admin/assignment-mark" element={<AssignmentMark />} />
+        <Route path="/admin/assignment" element={<Assignment />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/course-player/video/:videoId" element={<CoursePlayer isQuizSubmit={isQuizSubmit} />} />
+        <Route path="/leader-board" element={<LeaderBoard />} />
+        <Route path="/quiz/:quizId" element={<Quiz setIsQuizSubmit={setIsQuizSubmit} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
