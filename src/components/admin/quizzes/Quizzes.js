@@ -34,7 +34,7 @@ const Quizzes = () => {
   }
   // handle no data found
   if (!isLoading && !isError && quizzes?.length === 0) {
-    content = <p>No data found</p>;
+    content = <p>No data found..PLease Add</p>;
   }
 
   //handle data found

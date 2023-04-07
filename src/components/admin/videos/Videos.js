@@ -30,7 +30,7 @@ const Videos = () => {
 
   //handle no data found
   if (!isLoading && videos?.length === 0) {
-    content = <p>No data found...</p>;
+    content = <p>No data found... PLease Add</p>;
   }
 
   //handle error
